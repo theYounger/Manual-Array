@@ -3,6 +3,9 @@
 const iteratorModule = {
 
   count: 0,
+  updateCount: (skip) => {
+    iteratorModule.count = ++skip;
+  },
   init: (arr) => {
 
     return (skip /*stretch*/) => {
@@ -11,6 +14,7 @@ const iteratorModule = {
         iteratorModule.count++;
         return arr[counter];
       } else {
+        iteratorModule.updateCount(skip);
         return arr[skip];
       }
     };
